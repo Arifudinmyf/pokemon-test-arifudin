@@ -1,0 +1,16 @@
+<div class="p-4 text-center">
+    <h1 class="text-3xl font-bold mb-4">Pokemon Detail</h1>
+    <h2 class="text-2xl font-bold mb-2">#{{ pokemonDetail()?.id | number:'3.0' }} {{ pokemonDetail()?.name | titlecase }}</h2>
+
+    <img [src]="pokemonDetail()?.sprites?.back_default" alt="{{ pokemonDetail()?.name }}"
+        class="mx-auto h-40 object-contain" />
+
+    <div class="text-sm mt-4 space-y-1">
+        <p><strong>Weight:</strong> {{ pokemonDetail()?.weight }} kg</p>
+        <p><strong>Height:</strong> {{ pokemonDetail()?.height }} m</p>
+        <p><strong>Types:</strong> {{ pokemonDetail()?.types?.join('/') }}</p>
+        <p><strong>Abilities:</strong> {{ abilities()?.join(', ') }}</p>
+        <p><strong>Moves:</strong> {{ moves()?.join(', ') }}</p>
+    </div>
+
+</div>

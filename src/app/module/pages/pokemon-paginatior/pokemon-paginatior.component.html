@@ -1,0 +1,57 @@
+<div class="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-4 p-4">
+    <div class="hover:scale-105 transition cursor-pointer bg-gray-700 shadow-md rounded-lg p-4 border-green-500 border-4 text-white"
+        *ngFor="let p of paginatedPokemons();" (click)="goToPokemonDetail(p)">
+        <span class="text-center font-bold text-lg">
+            #{{ p.id | number:'3.0' }}
+        </span>
+        <div class="rounded-full bg-gradient-to-b from-gray-300 to-90%  to-gray-700  ">
+            <img [src]="p.sprites.other?.dream_world?.front_default" class="h-[250px] mx-auto object-fill" alt="pokemon"/>
+        </div>
+        <div class="flex justify-center space-x-2 flex-col">
+            <span class="text-center font-bold text-lg">
+                {{ p.name | titlecase }}
+            </span>
+            <div class="text-center flex justify-between p-5">
+                <p class="flex flex-col">
+                    <span>Weight</span> 
+                    <span class="flex items-center font-bold">
+                        {{ p.weight }} kg
+                    </span>
+                </p>
+                <p class="flex flex-col">
+                    <span>Height</span> 
+                    <span class="font-bold">
+                        {{ p.height }} m
+                    </span>
+                </p>
+            </div>
+            <p class="text-center">
+                <span>Type:</span> 
+                    <span class="font-bold">
+                        {{ p.types.join('/') }}
+                    </span>
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Pagination -->
+<div class="flex justify-center space-x-2 my-4">
+    <button mat-raised-button color="primary" (click)="changePage(currentPage() - 1)" [disabled]="currentPage() === 1">
+        Prev
+    </button>
+
+    <!-- @for (let p of paginationNumbers(); track p) { -->
+    <div *ngFor="let p of paginationNumbers();">
+        <button mat-raised-button [color]="p === currentPage() ? 'accent' : undefined" [disabled]="p === currentPage()"
+            (click)="changePage(p)">
+            {{ p }}
+        </button>
+    </div>
+    <!-- } -->
+
+    <button mat-raised-button color="primary" (click)="changePage(currentPage() + 1)"
+        [disabled]="currentPage() === totalPages()">
+        Next
+    </button>
+</div>
