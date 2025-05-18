@@ -1,9 +1,11 @@
 <div class="p-4 text-center">
     <h1 class="text-3xl font-bold mb-4">Pokemon Detail</h1>
-    <h2 class="text-2xl font-bold mb-2">#{{ pokemonDetail()?.id | number:'3.0' }} {{ pokemonDetail()?.name | titlecase }}</h2>
+    <h2 class="text-2xl font-bold mb-2">#{{ pokemonDetail()?.id | number:'3.0' }}</h2>
 
-    <img [src]="pokemonDetail()?.sprites?.back_default" alt="{{ pokemonDetail()?.name }}"
-        class="mx-auto h-40 object-contain" />
+    <img [src]="pokemonDetail()?.sprites?.other?.dream_world?.front_default" alt="{{ pokemonDetail()?.name }}"
+        class="mx-auto h-48 object-contain" />
+
+    <h2 class="text-2xl font-bold mb-2">{{ pokemonDetail()?.name | titlecase }}</h2>
 
     <div class="text-sm mt-4 space-y-1">
         <p><strong>Weight:</strong> {{ pokemonDetail()?.weight }} kg</p>
