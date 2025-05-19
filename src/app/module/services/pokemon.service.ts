@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { PokemonPageResponse } from '../models/pokemon-list.model';
+import { DetailPokemon } from '../models/detail.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,6 @@ export class PokemonService {
   }
 
   getPokemonDetail(name: string) {
-    return this.http.get<any>(`https://pokeapi.co/api/v2/pokemon/${name}`);
+    return this.http.get<DetailPokemon>(`https://pokeapi.co/api/v2/pokemon/${name}`);
   }
 }
