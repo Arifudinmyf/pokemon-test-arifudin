@@ -63,8 +63,8 @@ export class PokemonPaginatiorComponent {
 
       const formatted: DetailPokemon[] = detailList.map((d) => ({
         ...d,
-        image: d?.sprites?.other?.dream_world?.front_default,
-        types: d.types,
+        image: d.sprites.other?.dream_world?.front_default,
+        types: d.types.map((t: Type) => t.type.name),
       }));
 
       this.allPokemons.set(formatted);
